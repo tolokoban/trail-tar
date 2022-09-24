@@ -1,0 +1,19 @@
+{
+    "name": "trail-tar",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "deploy": "gh-pages -d html"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tolokoban/trail-tar.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tolokoban/trail-tar/issues"
+    },
+    "homepage": "https://github.com/tolokoban/trail-tar#readme"
+}
