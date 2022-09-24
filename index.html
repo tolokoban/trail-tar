@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="theme-color" content="#333" />
+        <link rel="manifest" href="manifest.json" />
+        <link crossorigin="anonymous" media="all" rel="stylesheet" href="style.css" />
+        <title>Le défi du TAR</title>
+    </head>
+
+    <body>
+        <section>
+            <a class="article" href="https://tar.livetrail.net/coureur.php?rech=188" target="DAVID">
+                <img src="dav.png" />
+                <div class="name"><div>David</div><b>188</b></div>
+                <footer></footer>
+            </a>
+            <a class="article" href="https://tar.livetrail.net/coureur.php?rech=719" target="FABIEN">
+                <img src="fab.png" />
+                <div class="name"><div>Fabien</div><b>719</b></div>
+                <footer></footer>
+            </a>
+            <a class="article" href="https://tar.livetrail.net/coureur.php?rech=737" target="FREDERIC">
+                <img src="frd.png" />
+                <div class="name"><div>Frédéric</div><b>737</b></div>
+                <footer></footer>
+            </a>
+            <a class="article" href="https://tar.livetrail.net/coureur.php?rech=738" target="SEBASTIEN">
+                <img src="seb.png" />
+                <div class="name"><div>Sébastien</div><b>738</b></div>
+                <footer></footer>
+            </a>
+        </section>
+    </body>
+    <script>
+        function makeStar(filled) {
+            return `<svg class="${filled ? "fill" : "void"}" viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg>`
+        }
+
+        function makeStars(rating) {
+            const ids = [1,2,3,4,5]
+            return `<div class="starts">${
+                ids.map(id => makeStar(rating >= id)).join("")
+            }</div>`
+        }
+
+        const footers = document.body.querySelectorAll("a.article > footer")
+        const ratings = [
+            [4,3,4,4],
+            [3,5,3,4],
+            [2,4,4,5],
+            [5,4,5,1]
+        ]
+        for (const footer of footers) {
+            const stars = ratings.shift()
+            footer.innerHTML = [
+                `<div><div>Montée</div>${makeStars(stars[0])}</div>`,
+                `<div><div>Descente</div>${makeStars(stars[1])}</div>`,
+                `<div><div>Plat</div>${makeStars(stars[2])}</div>`,
+                `<div><div>Endurance</div>${makeStars(stars[3])}</div>`,
+            ].join("\n")
+        }
+    </script>
+</html>
